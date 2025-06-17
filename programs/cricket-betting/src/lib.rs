@@ -69,6 +69,7 @@ pub mod cricket_betting {
 
     pub fn distribute_prize(ctx: Context<UpdateGameAccount>) -> Result<()> {
         // this will be hard
+        Ok(())
     }
 }
 

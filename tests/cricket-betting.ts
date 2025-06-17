@@ -54,4 +54,28 @@ describe("cricket-betting", () => {
     const bet = await program.account.bettorAccount.fetch(bettorAccountPDA);
     console.log("Bettor account:", bet);
   });
+
+  it("update betting stoped", async () => {
+    const tx = await program.methods.updateBettingStop().accounts({
+      gameAccount: gameAccountPDA,
+      signer: provider.wallet.publicKey,
+    }).rpc();
+
+    console.log("Game account updated:", tx);
+
+    const game = await program.account.gameAccount.fetch(gameAccountPDA);
+    console.log("game account:", game)
+  })
+
+  it("update results", async () => {
+    const tx = await program.methods.updateGameResult(200, 2).accounts({
+      gameAccount: gameAccountPDA,
+      signer: provider.wallet.publicKey,
+    }).rpc();
+
+    console.log("Game account result updated:", tx);
+
+    const game = await program.account.gameAccount.fetch(gameAccountPDA);
+    console.log("game account:", game)
+  })
 });
